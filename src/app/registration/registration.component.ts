@@ -18,7 +18,7 @@ export class RegistrationComponent {
   value: any;
   userData: any;
   receivedData: any = [];
-
+  userName: any;
   tableData = [
     {
       id: 1,
@@ -48,6 +48,7 @@ export class RegistrationComponent {
   dataSource = new MatTableDataSource(this.tableData);
   @ViewChild(MatSort)
   sort: any = MatSort;
+  name: any;
   constructor(
     private toastrService: ToastrService,
     private router: Router,
@@ -60,10 +61,15 @@ export class RegistrationComponent {
     this.dataSource.sort = this.sort;
   }
 
-  /* this method is to get user datas using api*/
+  /* this method is to get user datas from Session*/
   get_table_data() {
-    sessionStorage.setItem('Data', JSON.stringify(this.tableData));
-    const data = sessionStorage.getItem('Data');
+    // localStorage.setItem('Data', JSON.stringify(this.tableData));
+
+    this.userName = sessionStorage.getItem('userName');
+    this.name = JSON.parse(this.userName);
+    console.log(this.name);
+
+    const data = localStorage.getItem('Data');
     this.tableData = JSON.parse(data || '{}');
   }
 
@@ -113,7 +119,7 @@ export class RegistrationComponent {
       };
 
       this.tableData = [...this.tableData, edit_data];
-      sessionStorage.setItem('Data', JSON.stringify(this.tableData));
+      localStorage.setItem('Data', JSON.stringify(this.tableData));
     });
   }
 
@@ -127,7 +133,7 @@ export class RegistrationComponent {
     this.tableData.splice(index, 1);
     this.toastrService.success('Message Success!', 'Title Success!');
     this.tableData = [...this.tableData];
-    sessionStorage.setItem('Data', JSON.stringify(this.tableData));
+    localStorage.setItem('Data', JSON.stringify(this.tableData));
   }
 
   /*method for search filter */

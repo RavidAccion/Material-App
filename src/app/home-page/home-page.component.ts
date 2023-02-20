@@ -7,7 +7,19 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent {
   showFiller = false;
+  userName: any;
+  name: any;
   constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    this.getName();
+  }
+
+  getName() {
+    this.userName = sessionStorage.getItem('userName');
+    this.name = JSON.parse(this.userName);
+    console.log(this.name);
+  }
 
   Logout() {
     sessionStorage.clear();

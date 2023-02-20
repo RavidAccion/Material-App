@@ -2,10 +2,6 @@
   <div class="row">
     <div class="col-4 box-shadow">
       <div class="back-image">
-        <!-- <div class="row">
-<h4>SIGN UP</h4>
-<h6>if you still dont have an Account</h6>
-</div> -->
       </div>
     </div>
     <div class="col-8 d-flex justify-content-center" *ngIf="!register">
@@ -33,7 +29,7 @@
     hasError('required')">Enter
       password</span>
   </div>
-  <span class="Warning-color"*ngIf="invalid">please Enter A Valid Credentials</span>
+  <span class="Warning-color text-center"*ngIf="invaliduser"> Invalid User</span>
   <div class=" text-center pb-3">
     <button type="submit" class="btn btn-primary bt buttonchange"
     [disabled]="!loginForm.valid">Log In</button>

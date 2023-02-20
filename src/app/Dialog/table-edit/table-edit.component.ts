@@ -14,6 +14,7 @@ export class TableEditComponent {
     public dialogRef: MatDialogRef<TableEditComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any = []
   ) {}
+
   ngOnInit(): void {
     this.FormBuild();
   }
@@ -28,6 +29,7 @@ export class TableEditComponent {
     });
     this.form.patchValue(this.data);
   }
+
   /*this method is to send the editted data from the dialog to the table component */
   submit() {
     this.dialogRef.close({
