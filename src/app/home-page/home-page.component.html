@@ -1,7 +1,8 @@
 <mat-toolbar color="primary">
   <span>HEY DEVELOPER</span>
   <span class="example-spacer"></span>
-  <!-- <button mat-icon-button (click)="regform()" class="example-icon favorite-icon" aria-label="Example icon-button with
+  <!-- <button mat-icon-button (click)="regform()" class="example-icon favorite-icon" aria-label=
+    "Example icon-button with
   heart icon">
     <mat-icon>dashboard</mat-icon>
   </button> -->
@@ -38,8 +39,13 @@
     am always looking for good projects.
   </h4>
 </div>
+<div style="width: 100%;  text-align:center;margin:0; padding:0;">
+  <ng-image-slider #nav [images]="imageObject" [infinite]="true" [autoSlide]="1"
+    [imageSize]="{width: '35%', height: 200}" slideImage="1"></ng-image-slider>
+</div>
+
     <div class="row p-4">
-      <div class="col-sm">
+      <div class="col-sm ">
         <div class="card" >
           <div>
             <img src="../../assets/images/project-icon.png" class="card-img-top " alt="...">
@@ -81,6 +87,7 @@
       </div>
     </div>
     <hr>
+
     <div class="row g-0 mt-2 p-4">
       <div class="col-sm-6 col-md-8 to-center">
         <h1>
@@ -100,7 +107,8 @@
   </div>
   <!-- </div> -->
   <!-- Footer -->
-<footer class="page-footer font-small blue pt-4" style="background-color:#1a1c1d; color: aliceblue;">
+<footer class="page-footer font-small blue pt-4"
+style="background-color:#1a1c1d; color: aliceblue;">
   <div class="container-fluid text-center text-md-left">
     <div class="row">
       <div class="col-md-6 mt-md-0 mt-3">
@@ -112,7 +120,7 @@
         <h5 class="text-uppercase">Links</h5>
       <ul class="list-unstyled">
           <li>
-           <p>HOME</p>
+           <p class="point" (click)="regform()">DASHBOARD</p>
           </li>
           <li>
             <p>CONTACT</p>
