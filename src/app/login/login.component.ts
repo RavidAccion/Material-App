@@ -85,11 +85,9 @@ export class LoginComponent {
       this.router.navigate(['/registration']);
     }
     Object.keys(this.result).forEach((key) => {
-      console.log(this.loginForm.getRawValue(), 'ssss');
-      console.log(key, this.result[key].name);
       if (
         this.result[key].name === this.loginForm.getRawValue().name &&
-        this.result[key].Password === this.loginForm.getRawValue().password
+        this.result[key].password === this.loginForm.getRawValue().Password
       ) {
         this.token = 'user';
         sessionStorage.setItem('Token', this.token);

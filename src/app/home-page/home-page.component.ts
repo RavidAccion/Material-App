@@ -9,6 +9,27 @@ export class HomePageComponent {
   showFiller = false;
   userName: any;
   name: any;
+  imageObject = [
+    {
+      video: 'https://www.youtube.com/watch?v=BiTeY6CkSbQ',
+      title: 'ACCION LABS GLOBAL INNOVATIVE SUMMIT',
+      alt: 'youtube video',
+    },
+    {
+      video: 'https://www.youtube.com/watch?v=3aH3iBp5fD0',
+      title: 'HERE YOU GO',
+    },
+    {
+      video: 'https://youtu.be/LXRJsPefnYo',
+      title: 'WE ARE HIRING',
+      alt: 'youtube video',
+      // video:
+      //   'https://sanjayv.github.io/ng-image-slider/contents/assets/video/movie2.mp4',
+      // posterImage:
+
+      // title: 'Youtube example one with title.',
+    },
+  ];
   constructor(private router: Router) {}
 
   ngOnInit(): void {

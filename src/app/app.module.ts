@@ -26,6 +26,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
+import { NgImageSliderModule } from 'ng-image-slider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,10 +36,10 @@ import { ToastrModule } from 'ngx-toastr';
     TableEditComponent,
   ],
   imports: [
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 5000, // 15 seconds
-      closeButton: true,
-      progressBar: true,
+      timeOut: 1000,
+      positionClass: 'toast-top-right',
     }),
     FormsModule,
     MatSortModule,
@@ -60,6 +61,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatMenuModule,
     BrowserAnimationsModule,
     MatSidenavModule,
+    NgImageSliderModule,
   ],
   providers: [AuthserviceService, CookieService],
   bootstrap: [AppComponent],

@@ -131,7 +131,9 @@ export class RegistrationComponent {
     const index = deldata.findIndex((x) => x.id === data.id);
     // delete this.tableData[index];
     this.tableData.splice(index, 1);
-    this.toastrService.success('Message Success!', 'Title Success!');
+    this.toastrService.success('Message Success!', 'Title Success!', {
+      positionClass: 'toast-top-center',
+    });
     this.tableData = [...this.tableData];
     localStorage.setItem('Data', JSON.stringify(this.tableData));
   }
@@ -146,17 +148,6 @@ export class RegistrationComponent {
       _dataSource.filter = filterValue.trim().toLowerCase();
       this.tableData = _dataSource.filteredData;
     });
-    // var _dataSource = new MatTableDataSource(this.tableData);
-    // var filterValue = this.search.value;
-    // _dataSource.filter = filterValue.trim().toLowerCase();
-    // this.tableData = _dataSource.filteredData;
-
-    // this.search.valueChanges.subscribe((data: any) => {
-    //   console.log(data);
-    // });
-    // this.tableData = this.tableData.filter((val) =>
-    //   val.first_name.toLowerCase().includes(this.search.value)
-    // );
   }
 
   /*this method is to reset the table datas*/
