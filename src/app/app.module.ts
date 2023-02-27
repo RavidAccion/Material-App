@@ -27,6 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { NgImageSliderModule } from 'ng-image-slider';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +42,7 @@ import { NgImageSliderModule } from 'ng-image-slider';
       timeOut: 1000,
       positionClass: 'toast-top-right',
     }),
+    MatPaginatorModule,
     FormsModule,
     MatSortModule,
     MatSelectModule,

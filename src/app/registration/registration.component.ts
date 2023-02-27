@@ -5,6 +5,7 @@ import { ApiServicesService } from '.././api-services.service';
 import { TableEditComponent } from '.././Dialog/table-edit/table-edit.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 @Component({
@@ -14,6 +15,9 @@ import { FormControl } from '@angular/forms';
 })
 export class RegistrationComponent {
   displayedColumns = ['Id', 'first name', 'last name', 'email', 'Actions'];
+  @ViewChild(MatPaginator, { static: false })
+  paginator: MatPaginator | null = null;
+
   search: any = new FormControl('');
   value: any;
   userData: any;
@@ -46,6 +50,7 @@ export class RegistrationComponent {
     },
   ];
   dataSource = new MatTableDataSource(this.tableData);
+
   @ViewChild(MatSort)
   sort: any = MatSort;
   name: any;
@@ -53,12 +58,15 @@ export class RegistrationComponent {
     private toastrService: ToastrService,
     private router: Router,
     private api: ApiServicesService,
-    private dialog: MatDialog
+    private dialog: MatDialog // private paginator: MatPaginator
   ) {}
-
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  // }
   ngOnInit() {
     this.get_table_data();
-    this.dataSource.sort = this.sort;
+    this.tableData.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
   /* this method is to get user datas from Session*/
