@@ -6,16 +6,8 @@
   <span class="toolbar-item-spacer"></span>
 
   <span class="toolbar-item-spacer"></span>
-  <span class="px-2">Welcome</span><span>{{name | uppercase }} </span>
-  <!-- <button mat-icon-button matTooltip="Like"> -->
-      <!-- <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="Share">
-      <mat-icon>share</mat-icon>
-  </button>
-  <button mat-icon-button matTooltip="Notifications">
-      <mat-icon>notifications</mat-icon>
-  </button> -->
+  <span class="px-2">Welcome</span><span>{{"name "| uppercase }} </span>
+
   <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
       <mat-icon>more_vert</mat-icon>
   </button>
@@ -39,68 +31,31 @@
         <mat-list-item routerLink="/Stores" routerLinkActive="active">
           <mat-icon class="pt-1">store</mat-icon><span class="ps-2">Stores</span>
       </mat-list-item>
-          <!-- <mat-expansion-panel [class.mat-elevation-z0]="true">
-              <mat-expansion-panel-header>
-                Mobile
-              </mat-expansion-panel-header>
-              <mat-nav-list>
-                  <a mat-list-item routerLink="#">
-                      <mat-icon>apple</mat-icon><span>iOS</span>
-                  </a>
-                  <a mat-list-item routerLink="#">
-                      <mat-icon>android</mat-icon><span>Android</span>
-                  </a>
-              </mat-nav-list>
-          </mat-expansion-panel> -->
+
 
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
   <div class="example-container mat-elevation-z8">
-    <!-- <section>
-      <div class="example-button-row " align="end">
-        <button mat-button color="primary" (click)="create_dialog()" ><mat-icon>add</mat-icon>
-          Add New</button>
-      </div>
-    </section> -->
-    <!-- <mat-form-field  class="full-width">
-      <mat-label>Filter</mat-label>
-      <input
-        matInput
 
-        placeholder="Search Columns"
-        #input
-      />
-    </mat-form-field> -->
 <div class="row mb-2">
   <div class="col-8">
 
-      <!-- <input type="text" class="form-control" (keyup)="applyFilter()"
-      (keydown.backspace)="applyFilter()" [formControl]="search" id="inputPassword2"
-       placeholder="Search"> -->
-       <mat-form-field>
-        <!-- <mat-label>Search</mat-label> -->
-        <input matInput (keyup)="applyFilter($event)"  [formControl]="search" placeholder="search" #input >
-      </mat-form-field>
+
 
   </div>
-  <!-- <div class="col-2">
 
-    <button mat-button color="primary" (click)="applyFilter()" ><mat-icon>search</mat-icon>Search
-    </button>
-
-</div> -->
-<div class="col-4">
+<!-- <div class="col-4">
  <div class="example-button-row px-lg-5 pt-3" align="center">
         <button mat-button color="primary" (click)="create_dialog()" ><mat-icon>add</mat-icon>
           Add New</button>
-      </div>
-  <!-- <button mat-button color="primary" (click)="reset()" ><mat-icon>refresh</mat-icon>Reset</button> -->
+      </div> -->
+
 
 </div>
     </div>
 
-    <mat-table #table matSort [dataSource]="dataSource"   style="background-color: aliceblue;">
+    <!-- <mat-table #table matSort [dataSource]="dataSource"   style="background-color: aliceblue;">
       <ng-container matColumnDef="Id">
         <mat-header-cell *matHeaderCellDef class="fw-bolder"> No </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -124,7 +79,7 @@
         <mat-header-cell *matHeaderCellDef class="fw-bolder"> Actions </mat-header-cell>
         <mat-cell *matCellDef="let element"> <span  (click)="showPrompt(element)">
           <mat-icon>edit</mat-icon></span>
-          <span class="p-2" style="color:red" (click)="Delete_Dialog(element)"> <mat-icon>delete</mat-icon></span>
+          <span class="p-2"(click)="Delete_Dialog(element)"> <mat-icon>delete</mat-icon></span>
         </mat-cell>
       </ng-container>
 
@@ -133,15 +88,11 @@
       <tr class="mat-row" *matNoDataRow>
         <td class="mat-cell" colspan="4">No data matching the filter "{{nodata}}"</td>
       </tr>
-    </mat-table>
-    <mat-paginator #paginator
+    </mat-table> -->
+    <!-- <mat-paginator #paginator
                [pageSize]="5"
                [pageSizeOptions]="[ 5, 15, 20, 25, dataSource.data.length]">
-</mat-paginator>
-  </div>
+</mat-paginator> -->
+  <!-- </div> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-
-
-

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiServicesService } from '.././api-services.service';
@@ -6,6 +6,7 @@ import { TableEditComponent } from '.././Dialog/table-edit/table-edit.component'
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+
 import { MatSort, Sort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 @Component({
@@ -13,10 +14,12 @@ import { FormControl } from '@angular/forms';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss'],
 })
-export class RegistrationComponent {
+export class RegistrationComponent implements AfterViewInit {
   displayedColumns = ['Id', 'first name', 'last name', 'email', 'Actions'];
-  @ViewChild(MatPaginator, { static: false })
-  paginator: MatPaginator | null = null;
+  @ViewChild('paginator')
+  paginator!: MatPaginator;
+  @ViewChild(MatSort)
+  matSort!: MatSort;
 
   search: any = new FormControl('');
   value: any;
@@ -49,24 +52,25 @@ export class RegistrationComponent {
       last_name: 'exa',
     },
   ];
-  dataSource = new MatTableDataSource(this.tableData);
+  dataSource!: MatTableDataSource<any>;
 
-  @ViewChild(MatSort)
-  sort: any = MatSort;
   name: any;
+  nodata: any;
   constructor(
     private toastrService: ToastrService,
     private router: Router,
     private api: ApiServicesService,
-    private dialog: MatDialog // private paginator: MatPaginator
+    private dialog: MatDialog
   ) {}
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
+
   ngOnInit() {
     this.get_table_data();
-    this.tableData.sort = this.sort;
+  }
+  ngAfterViewInit() {
+    console.log(this.dataSource);
     this.dataSource.paginator = this.paginator;
+    console.log(this.paginator);
+    this.dataSource.sort = this.matSort;
   }
 
   /* this method is to get user datas from Session*/
@@ -79,6 +83,7 @@ export class RegistrationComponent {
 
     const data = localStorage.getItem('Data');
     this.tableData = JSON.parse(data || '{}');
+    this.dataSource = new MatTableDataSource(this.tableData);
   }
 
   /*this method is to open the edit dialog box and its passing the data to the dilog */
@@ -108,6 +113,10 @@ export class RegistrationComponent {
       (test[index].email = editData.email),
         (test[index].first_name = editData.first_name),
         (test[index].last_name = editData.last_name);
+
+      this.toastrService.success('', 'Edited Successfully!', {
+        positionClass: 'toast-top-right',
+      });
     });
   }
 
@@ -128,6 +137,9 @@ export class RegistrationComponent {
 
       this.tableData = [...this.tableData, edit_data];
       localStorage.setItem('Data', JSON.stringify(this.tableData));
+      this.toastrService.success('', 'Created Successfully!', {
+        positionClass: 'toast-top-right',
+      });
     });
   }
 
@@ -139,28 +151,41 @@ export class RegistrationComponent {
     const index = deldata.findIndex((x) => x.id === data.id);
     // delete this.tableData[index];
     this.tableData.splice(index, 1);
-    this.toastrService.success('Message Success!', 'Title Success!', {
-      positionClass: 'toast-top-center',
+    this.toastrService.success('', 'Deleted Successfully!', {
+      positionClass: 'toast-top-right',
     });
     this.tableData = [...this.tableData];
     localStorage.setItem('Data', JSON.stringify(this.tableData));
+    this.get_table_data();
   }
 
   /*method for search filter */
-  applyFilter() {
-    console.log(this.search);
-    this.search.valueChanges.subscribe((data: any) => {
-      console.log(data);
-      var _dataSource = new MatTableDataSource(this.tableData);
-      var filterValue = data;
-      _dataSource.filter = filterValue.trim().toLowerCase();
-      this.tableData = _dataSource.filteredData;
-    });
+  // applyFilter() {
+  //   console.log(this.search);
+  //   this.search.valueChanges.subscribe((data: any) => {
+  //     console.log(data);
+  //     var _dataSource = new MatTableDataSource(this.tableData);
+  //     var filterValue = data;
+  //     this.nodata = filterValue;
+  //     _dataSource.filter = filterValue.trim().toLowerCase();
+  //     console.log(_dataSource);
+  //     this.tableData = _dataSource.filteredData;
+  //     this.dataSource = new MatTableDataSource(this.tableData);
+  //   });
+  // }
+
+  /*method for search filter */
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.nodata = filterValue;
+    var _dataSource = new MatTableDataSource(this.tableData);
+    _dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource = new MatTableDataSource(_dataSource.filteredData);
   }
 
   /*this method is to reset the table datas*/
   reset() {
-    this.get_table_data();
+    this.dataSource = new MatTableDataSource(this.tableData);
   }
 
   /*this method is to log out from the application */

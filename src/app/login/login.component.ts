@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,7 +23,11 @@ export class LoginComponent {
       password: '12345',
     },
   ];
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.loginFormBuild();
@@ -98,6 +102,10 @@ export class LoginComponent {
         this.router.navigate(['/Homepage']);
       } else {
         this.invaliduser = true;
+        // this.toastrService.error('', 'Invalid User', {
+        //   positionClass: 'toast-top-center',
+        // });
+        console.log('wswd');
       }
     });
   }
@@ -118,6 +126,9 @@ export class LoginComponent {
       const _regData = [..._tempData, this.SignupForm.getRawValue()];
       localStorage.setItem('registerData', JSON.stringify(_regData));
       this.register = false;
+      this.toastrService.success('', 'UserRegistered Successfully!', {
+        positionClass: 'toast-top-right',
+      });
     }
   }
 

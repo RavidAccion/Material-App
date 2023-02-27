@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthserviceService } from './authservice.service';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
+import { StoresComponent } from './stores/stores.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -19,6 +20,11 @@ const routes: Routes = [
   {
     path: 'Homepage',
     component: HomePageComponent,
+    canActivate: [AuthserviceService],
+  },
+  {
+    path: 'Stores',
+    component: StoresComponent,
     canActivate: [AuthserviceService],
   },
 ];

@@ -20,6 +20,13 @@ export class HomePageComponent {
       title: 'HERE YOU GO',
     },
     {
+      video:
+        'https://sanjayv.github.io/ng-image-slider/contents/assets/video/movie2.mp4',
+      posterImage:
+        'https://slotuniverses.co.uk/wp-content/uploads/sites/12030/upload_fed1091b34dcf8203c0729c4faa62315.png',
+      title: 'Youtube example one with title.',
+    },
+    {
       video: 'https://youtu.be/LXRJsPefnYo',
       title: 'WE ARE HIRING',
       alt: 'youtube video',

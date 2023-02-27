@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { AuthserviceService } from './authservice.service';
@@ -28,6 +29,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { StoresComponent } from './stores/stores.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     RegistrationComponent,
     TableEditComponent,
+    StoresComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -43,6 +46,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
       positionClass: 'toast-top-right',
     }),
     MatPaginatorModule,
+    MatInputModule,
     FormsModule,
     MatSortModule,
     MatSelectModule,
