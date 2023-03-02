@@ -23,9 +23,9 @@ export class TableEditComponent {
   FormBuild(): void {
     this.form = this.fb.group({
       id: '',
-      first_name: ['', Validators.required],
-      last_name: ['', Validators.required],
-      email: ['', Validators.required, Validators.email],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
     });
     this.form.patchValue(this.data);
   }

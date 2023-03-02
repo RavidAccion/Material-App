@@ -84,14 +84,9 @@
       </mat-form-field>
 
   </div>
-  <!-- <div class="col-2">
 
-    <button mat-button color="primary" (click)="applyFilter()" ><mat-icon>search</mat-icon>Search
-    </button>
-
-</div> -->
-<div class="col-4">
- <div class="example-button-row px-lg-5 pt-3" align="center">
+<div class="col-4" align="end">
+ <div class="example-button-row px-lg-5 pt-3" >
         <button mat-button color="primary" (click)="create_dialog()" ><mat-icon>add</mat-icon>
           Add New</button>
       </div>
@@ -122,7 +117,7 @@
       </ng-container>
       <ng-container matColumnDef="Actions" >
         <mat-header-cell *matHeaderCellDef class="fw-bolder"> Actions </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <span  (click)="showPrompt(element)">
+        <mat-cell *matCellDef="let element"> <span style="color: #673ab7;"  (click)="showPrompt(element)">
           <mat-icon>edit</mat-icon></span>
           <span class="p-2" style="color:red" (click)="Delete_Dialog(element)"> <mat-icon>delete</mat-icon></span>
         </mat-cell>
@@ -136,7 +131,7 @@
     </mat-table>
     <mat-paginator #paginator
                [pageSize]="5"
-               [pageSizeOptions]="[ 5, 15, 20, 25, dataSource.data.length]">
+               [pageSizeOptions]="[ 5, 15, 20, 25]">
 </mat-paginator>
   </div>
   </mat-sidenav-content>

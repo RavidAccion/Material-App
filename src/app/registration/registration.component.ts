@@ -75,7 +75,7 @@ export class RegistrationComponent implements AfterViewInit {
 
   /* this method is to get user datas from Session*/
   get_table_data() {
-    // localStorage.setItem('Data', JSON.stringify(this.tableData));
+    //localStorage.setItem('Data', JSON.stringify(this.tableData));
 
     this.userName = sessionStorage.getItem('userName');
     this.name = JSON.parse(this.userName);
@@ -114,6 +114,7 @@ export class RegistrationComponent implements AfterViewInit {
         (test[index].first_name = editData.first_name),
         (test[index].last_name = editData.last_name);
 
+      // localStorage.setItem('Data', JSON.stringify(index));
       this.toastrService.success('', 'Edited Successfully!', {
         positionClass: 'toast-top-right',
       });

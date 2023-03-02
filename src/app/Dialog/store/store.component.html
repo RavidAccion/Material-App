@@ -1,0 +1,117 @@
+<div class="form-container">
+  <h2 mat-dialog-title *ngIf="formId==1">CREATE STORE</h2>
+  <h2 mat-dialog-title *ngIf="formId==2">REGISTER STORE</h2>
+  <h2 mat-dialog-title *ngIf="formId==3">ADD PRODUCT</h2>
+  <h2 mat-dialog-title *ngIf="formId==4">ADD PRODUCT TO CATEGORY</h2>
+  <h2 mat-dialog-title *ngIf="formId==5">ADD CTEGORY</h2>
+  <mat-dialog-content>
+
+    <form [formGroup]="form" *ngIf="formId==1">
+      <div class="form-group" >
+        <!-- <label for="formGroupExampleInput">Store Name</label> -->
+        <input type="text" class="form-control" placeholder="Store Name" formControlName="name"
+        id="formGroupExampleInput" >
+      </div>
+
+    </form>
+
+    <form [formGroup]="Categoryform" *ngIf="formId==5">
+      <div class="form-group" >
+        <!-- <label for="formGroupExampleInput">Store Name</label> -->
+        <input type="text" class="form-control" placeholder="Category"
+        formControlName="category_Name"id="formGroupExampleInput" >
+      </div>
+
+    </form>
+
+    <form [formGroup]="catform" *ngIf="formId==2">
+
+      <mat-form-field>
+        <mat-select class="form-control" formControlName="store_id" placeholder="Store">
+          <mat-option *ngFor="let store of dataSource" [value]="store.store_id">
+            {{store.store_Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select class="form-control" formControlName="category_id" placeholder="Category">
+          <mat-option *ngFor="let cat of categoryData" [value]="cat.id">
+            {{cat.category_Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+    <form [formGroup]="addProduct" *ngIf="formId==3">
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Name" formControlName="product_Name"
+        id="formGroupExampleInput" >
+      </div>
+      <div class="form-group" >
+        <input type="number" class="form-control" placeholder="Price" formControlName="price"
+        id="formGroupExampleInput" >
+      </div>
+      <div class="form-group" >
+        <input type="number" class="form-control" placeholder="Quantity" formControlName="quantity"
+        id="formGroupExampleInput" >
+      </div>
+      <div class="form-group" >
+        <input type="text" class="form-control" placeholder="Description"
+        formControlName="product_description"
+        id="formGroupExampleInput" >
+      </div>
+
+    </form>
+
+    <form [formGroup]="ProductCat" *ngIf="formId==4">
+
+      <mat-form-field>
+        <mat-select class="form-control" formControlName="product_id" placeholder="Product">
+          <mat-option *ngFor="let product of productData" [value]="product.id">
+            {{product.product_Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-select class="form-control" formControlName="category_id" placeholder="Category">
+          <mat-option *ngFor="let cat of categoryData" [value]="cat.id">
+            {{cat.category_Name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    </form>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button (click)="dialogRef.close(false)" color="primary">
+      <mat-icon>clear</mat-icon>  Close
+    </button>
+    <button  [disabled]="!form.valid" *ngIf="formId==1" mat-raised-button (click)="submit()"
+     color="primary">	<mat-icon>save_alt</mat-icon>
+      Save
+    </button>
+    <button  [disabled]="!Categoryform.valid" *ngIf="formId==5" mat-raised-button
+    (click)="saveCategory()"   color="primary">	<mat-icon>save_alt</mat-icon>
+      Save
+    </button>
+    <button [disabled]="!catform.valid" *ngIf="formId==2" mat-raised-button
+    (click)="submitcatForm()"   color="primary">
+      <mat-icon>send</mat-icon> Register
+    </button>
+    <button [disabled]="!addProduct.valid" *ngIf="formId==3 && type!='edit'" mat-raised-button
+    (click)="submitProductForm()"   color="primary">
+      <mat-icon>add_box</mat-icon>Add
+    </button>
+    <button [disabled]="!addProduct.valid" *ngIf="formId==3 && type=='edit'" mat-raised-button
+    (click)="submitProductForm()"   color="primary">
+      <mat-icon>update</mat-icon>update
+    </button>
+    <button [disabled]="!ProductCat.valid"  *ngIf="formId==4" mat-raised-button
+    (click)="submitProdCatForm()"   color="primary">
+      <mat-icon>add_box</mat-icon>Add
+    </button>
+
+  </mat-dialog-actions>
+</div>
+
+

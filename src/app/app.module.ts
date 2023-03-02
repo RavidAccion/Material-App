@@ -30,17 +30,23 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { StoresComponent } from './stores/stores.component';
+import { StoreComponent } from './Dialog/store/store.component';
+import { TruncatePipe } from './truncate.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     LoginComponent,
+    TruncatePipe,
     RegistrationComponent,
     TableEditComponent,
     StoresComponent,
+    StoreComponent,
   ],
   imports: [
     BrowserAnimationsModule,
+    MatTooltipModule,
     ToastrModule.forRoot({
       timeOut: 1000,
       positionClass: 'toast-top-right',

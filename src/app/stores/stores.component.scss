@@ -16,6 +16,21 @@
 .app-sidenav {
   width: 230px;
 }
+
+// .mat-drawer-content {
+
+//    overflow: hidden !important;
+// }
+.mat-cell {
+  font-size: 14px;
+  min-height: 48px;
+  text-align: center;
+  border-right: 1px solid black;
+}
+.fixed {
+  position: fixed;
+  z-index:999;
+  }
 .app-sidenav-content {
   display: flex;
   height: 100%;
@@ -107,4 +122,18 @@ section {
 .app-container{
   height: 90vh;
   margin: 0;
+}
+
+.scroll{
+  overflow-y: scroll;
+}
+.scroll {
+
+
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.scroll::-webkit-scrollbar { /* WebKit */
+  width: 0px;
 }
