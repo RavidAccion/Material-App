@@ -14,10 +14,12 @@ export class StoresComponent {
   displayedColumns = ['Store_Id', 'Store_name'];
   displayedColumns1 = ['id', 'Category'];
   displayedColumns2 = [
+    'S.No',
     'id',
     'Product',
     'Description',
     'price',
+    'brand',
     'quantity',
     'Actions',
   ];
@@ -113,7 +115,7 @@ export class StoresComponent {
     sessionStorage.setItem('formId', this.formId);
     const dialogRef = this.dialog.open(StoreComponent, {
       width: '350px',
-      height: '370px',
+      height: '400px',
     });
     dialogRef.afterClosed().subscribe((res) => {
       var data = {
@@ -200,10 +202,11 @@ export class StoresComponent {
     sessionStorage.setItem('formId', this.formId);
     const dialogRef = this.dialog.open(StoreComponent, {
       width: '350px',
-      height: '350px',
+      height: '400px',
       data: {
         product_Name: element.product_Name,
         price: element.price,
+        brand: element.brand,
         quantity: element.quantity,
         product_description: element.product_description,
         form: 'edit',
@@ -216,6 +219,7 @@ export class StoresComponent {
         id: element.id,
         product_Name: res.data.product_Name.value,
         price: res.data.price.value,
+        brand: res.data.brand.value,
         quantity: res.data.quantity.value,
         product_description: res.data.product_description.value,
       };

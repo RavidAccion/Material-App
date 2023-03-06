@@ -60,6 +60,7 @@ export class StoreComponent {
     this.addProduct = this.fb.group({
       product_Name: ['', [Validators.required]],
       price: ['', [Validators.required]],
+      brand: ['', [Validators.required]],
       quantity: ['', [Validators.required]],
       product_description: ['', [Validators.required]],
     });
@@ -92,7 +93,7 @@ export class StoreComponent {
     });
   }
 
-  /*to get the form id (formid 1=create store form , formid 2=register store form*/
+  /*to get the form id (formid 1=create store form , formid 2=register store form......*/
   get_formId() {
     this.formId = sessionStorage.getItem('formId');
   }
@@ -125,18 +126,21 @@ export class StoreComponent {
       },
     });
   }
-
+  /*to submit product form*/
   submitProductForm() {
     console.log(this.addProduct.value);
     this.dialogRef.close({
       data: {
         product_Name: this.addProduct.get('product_Name'),
         price: this.addProduct.get('price'),
+        brand: this.addProduct.get('brand'),
         quantity: this.addProduct.get('quantity'),
         product_description: this.addProduct.get('product_description'),
       },
     });
   }
+
+  /*to submit productcategory store form*/
   submitProdCatForm() {
     this.dialogRef.close({
       data: {

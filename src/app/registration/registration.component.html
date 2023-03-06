@@ -75,9 +75,6 @@
 <div class="row mb-2">
   <div class="col-8">
 
-      <!-- <input type="text" class="form-control" (keyup)="applyFilter()"
-      (keydown.backspace)="applyFilter()" [formControl]="search" id="inputPassword2"
-       placeholder="Search"> -->
        <mat-form-field>
         <!-- <mat-label>Search</mat-label> -->
         <input matInput (keyup)="applyFilter($event)"  [formControl]="search" placeholder="search" #input >
@@ -95,7 +92,7 @@
 </div>
     </div>
 
-    <mat-table #table matSort [dataSource]="dataSource"   style="background-color: aliceblue;">
+    <mat-table #table matSort [dataSource]="dataSource"   style="background-color: #c7b6e40d;">
       <ng-container matColumnDef="Id">
         <mat-header-cell *matHeaderCellDef class="fw-bolder"> No </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>

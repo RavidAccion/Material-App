@@ -61,7 +61,7 @@
           </div></div>
         </div>
 
-        <mat-table #table matSort [dataSource]="dataSource"   style="background-color: aliceblue;">
+        <mat-table #table matSort [dataSource]="dataSource"   style="background-color: #c7b6e40d;">
           <ng-container matColumnDef="Store_Id">
             <mat-header-cell *matHeaderCellDef class="fw-bolder"> ID</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.store_id}} </mat-cell>
@@ -92,7 +92,7 @@
 
         <!-- <h5 class="card-title">CATEGORY DATAS</h5> -->
         <mat-table #table matSort [dataSource]="categoryData"  style="background-color:
-         aliceblue;">
+         #c7b6e40d;">
           <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef class="fw-bolder">ID </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -129,7 +129,11 @@
 
         <!-- <h5 class="card-title">CATEGORY DATAS</h5> -->
         <div>
-        <mat-table #table matSort [dataSource]="productData"  style="background-color: aliceblue;">
+        <mat-table #table matSort [dataSource]="productData"  style="background-color: #c7b6e40d;">
+          <ng-container matColumnDef="S.No">
+            <mat-header-cell *matHeaderCellDef class="fw-bolder">S.No </mat-header-cell>
+            <mat-cell *matCellDef="let element  let i=index;"> {{i+1}} </mat-cell>
+          </ng-container>
           <ng-container matColumnDef="id">
             <mat-header-cell *matHeaderCellDef class="fw-bolder">ID </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
@@ -137,18 +141,27 @@
           <ng-container matColumnDef="Product">
             <mat-header-cell *matHeaderCellDef class="fw-bolder"> Product </mat-header-cell>
             <mat-cell *matCellDef="let element"
-            [matTooltip]="element.product_Name.length >2 ?element.product_Name : ''  "  >
-            {{element.product_Name | truncate:6}} </mat-cell>
+            [matTooltip]="element.product_Name.length >5 ?element.product_Name : ''  "  >
+            {{element.product_Name | truncate:4}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="Description">
             <mat-header-cell  mat-sort-header *matHeaderCellDef class="fw-bolder">Description
             </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.product_description}} </mat-cell>
+            <mat-cell *matCellDef="let element"
+            [matTooltip]="element.product_description.length >4 ?element.product_description : ''  ">
+            {{element.product_description  | truncate:4}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="price">
             <mat-header-cell  mat-sort-header *matHeaderCellDef class="fw-bolder">Price
             </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="brand">
+            <mat-header-cell  mat-sort-header *matHeaderCellDef class="fw-bolder">Brand
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"
+            [matTooltip]="element.brand.length >4 ?element.brand : ''  ">
+             {{element.brand | truncate:5}} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="quantity">
             <mat-header-cell  mat-sort-header *matHeaderCellDef class="fw-bolder">Quantity
@@ -157,13 +170,13 @@
           </ng-container>
 
     <ng-container matColumnDef="Actions">
-            <mat-header-cell  mat-sort-header *matHeaderCellDef class="fw-bolder">Actions
+            <mat-header-cell  *matHeaderCellDef class="fw-bolder">Actions
             </mat-header-cell>
             <mat-cell *matCellDef="let element">
 
               <span class="p-2" style="color:rgb(76, 0, 255)" (click)="edit_Product(element)">
                  <mat-icon>edit</mat-icon></span>
-              <span class="p-2" style="color:red" (click)="Delete_Product(element)">
+              <span  style="color:red" (click)="Delete_Product(element)">
                 <mat-icon>delete</mat-icon></span>
 
             </mat-cell>
