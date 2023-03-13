@@ -120,6 +120,7 @@ export class StoresComponent {
     dialogRef.afterClosed().subscribe((res) => {
       var data = {
         product_Name: res.data.product_Name.value,
+        brand: res.data.brand.value,
         price: res.data.price.value,
         quantity: res.data.quantity.value,
         product_description: res.data.product_description.value,
