@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
-import { AuthserviceService } from './authservice.service';
+import { AuthserviceService, canDeactivate } from './authservice.service';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { StoresComponent } from './stores/stores.component';
@@ -26,6 +26,7 @@ const routes: Routes = [
     path: 'Stores',
     component: StoresComponent,
     canActivate: [AuthserviceService],
+    // canDeactivate: [canDeactivate],
   },
 ];
 

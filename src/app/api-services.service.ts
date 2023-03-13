@@ -9,6 +9,7 @@ export class ApiServicesService {
   get_table_data() {
     return this.http.get(this.url + '/api/store/get');
   }
+
   get_table_category() {
     return this.http.get(this.url + '/api/category/get');
   }
@@ -16,6 +17,7 @@ export class ApiServicesService {
   create_Store(data: any) {
     return this.http.post(this.url + '/api/store/createStore', data);
   }
+
   create_cat_Store(data: any) {
     return this.http.post(this.url + '/api/catStore/create', data);
   }
@@ -27,11 +29,13 @@ export class ApiServicesService {
   get_table_product() {
     return this.http.get(this.url + '/api/ProductConroller/get');
   }
+
   delete_table_product(prodId: any) {
     return this.http.delete(
       this.url + `/api/ProductConroller/delete/${prodId}`
     );
   }
+
   edit_product(id: any, data: any) {
     return this.http.put(this.url + `/api/ProductConroller/edit/${id}`, data);
   }

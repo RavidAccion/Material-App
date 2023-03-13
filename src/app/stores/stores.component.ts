@@ -239,4 +239,10 @@ export class StoresComponent {
     sessionStorage.clear();
     this.router.navigate(['']);
   }
+
+  canDeactivate() {
+    return new Promise<any>((resolve, reject) => {
+      resolve(confirm('Are you sure you want to get out of this Page?'));
+    });
+  }
 }
