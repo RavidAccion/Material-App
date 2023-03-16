@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ApiServicesService {
   url: any = 'https://localhost:44356';
+  employeeurl: any = 'https://localhost:7097';
   constructor(private http: HttpClient) {}
   get_table_data() {
     return this.http.get(this.url + '/api/store/get');
@@ -50,5 +51,21 @@ export class ApiServicesService {
       'https://localhost:44356/api/ProductCat/create',
       data
     );
+  }
+
+  //employee
+  get_leavelist_data() {
+    return this.http.get(this.employeeurl + '/api/leave/Getleavelist');
+  }
+  getEmployeeData() {
+    return this.http.get(this.employeeurl + '/api/employee/get');
+  }
+  getEmployee_by_id(Id: any) {
+    return this.http.get(
+      this.employeeurl + `/api/employee/getemployeeID/${Id}`
+    );
+  }
+  applyLeave(data: any) {
+    return this.http.post(this.employeeurl + '/api/leave/applyleave', data);
   }
 }

@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TableEditComponent } from './Dialog/table-edit/table-edit.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { FormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrModule } from 'ngx-toastr';
@@ -34,6 +35,9 @@ import { StoreComponent } from './Dialog/store/store.component';
 import { MatCardModule } from '@angular/material/card';
 import { TruncatePipe } from './truncate.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatRadioModule } from '@angular/material/radio';
+import { EmployeeComponent } from './employee/employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,19 +48,23 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TableEditComponent,
     StoresComponent,
     StoreComponent,
+    EmployeeComponent,
   ],
   imports: [
     BrowserAnimationsModule,
     MatTooltipModule,
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 1500,
       positionClass: 'toast-top-right',
     }),
     MatCardModule,
+    MatGridListModule,
     MatPaginatorModule,
     MatInputModule,
     FormsModule,
+    MatRadioModule,
     MatSortModule,
+    MatTabsModule,
     MatSelectModule,
     MatDialogModule,
     HttpClientModule,

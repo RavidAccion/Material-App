@@ -31,6 +31,9 @@
         <mat-list-item routerLink="/Stores" routerLinkActive="menuactive">
           <mat-icon class="pt-1">store</mat-icon><span class="ps-2">Stores</span>
       </mat-list-item>
+      <mat-list-item routerLink="/Employee" routerLinkActive="menuactive">
+        <mat-icon class="pt-1">assignment_ind</mat-icon><span class="ps-2">Employee</span>
+    </mat-list-item>
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content  >
@@ -62,7 +65,8 @@
         </mat-card-title-group>
       </mat-card-header>
       <mat-card-content>
-        <mat-table #table matSort [dataSource]="dataSource"   style="background-color: #c7b6e40d;">
+        <mat-table #table matSort [dataSource]="dataSource"
+        style="background-color: #c7b6e40d;">
           <ng-container matColumnDef="Store_Id">
             <mat-header-cell *matHeaderCellDef class="fw-bolder"> ID</mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.store_id}} </mat-cell>
@@ -130,7 +134,8 @@
 
         <!-- <h5 class="card-title">CATEGORY DATAS</h5> -->
         <div>
-        <mat-table #table matSort [dataSource]="productData"  style="background-color: #c7b6e40d;">
+        <mat-table #table matSort [dataSource]="productData"
+         style="background-color: #c7b6e40d;">
           <ng-container matColumnDef="S.No">
             <mat-header-cell *matHeaderCellDef class="fw-bolder">S.No </mat-header-cell>
             <mat-cell *matCellDef="let element  let i=index;"> {{i+1}} </mat-cell>
@@ -204,5 +209,11 @@
   <!-- </div> -->
 
 
+  </mat-sidenav-content>
+  <mat-sidenav-content *ngIf="nodata" >
+    <p></p>
+    <mat-card>
+      <mat-card-content class="text-center text-danger">No Data Found / Api's Are Not Loaded</mat-card-content>
+    </mat-card>
   </mat-sidenav-content>
 </mat-sidenav-container>

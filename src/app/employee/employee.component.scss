@@ -1,0 +1,170 @@
+
+.toolbar-item-spacer {
+  flex: 1 1 auto;
+}
+
+.Warning-color{
+  color:red;
+  }
+
+  input.ng-touched.ng-invalid{
+    border:1px solid red;
+  }
+  // input.ng-touched.ng-valid{
+  //   border:1px solid rgb(0, 255, 51);
+  // }
+// .mat-drawer-content {
+//   position: relative;
+//   z-index: 1;
+//    display: unset !important;
+//   height: 100%;
+//   overflow: auto;
+// }
+.app-container {
+  height: 90%;
+  margin: 0;
+}
+.app-sidenav {
+  width: 230px;
+}
+
+// .mat-drawer-content {
+
+//    overflow: hidden !important;
+// }
+.mat-cell {
+  font-size: 14px;
+  min-height: 48px;
+  text-align: center;
+  border-right: 1px solid black;
+}
+.fixed {
+  position: fixed;
+  z-index:999;
+  }
+.app-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.menuactive{
+  background-color:#673ab75c ;
+ }
+
+.mat-mdc-form-field {
+  min-width: 100%;
+}
+/*temp content*/
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-container {
+
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+
+.end{
+  align-items: end;
+  justify-content: end;
+}
+
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+.active {
+  color: red;
+}
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.example-button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.example-button-row .mat-mdc-button-base {
+
+  background-color: #673ab75e;
+}
+.app-container{
+  height: 90vh;
+  margin: 0;
+}
+
+.scroll{
+  overflow-y: scroll;
+}
+mat-grid-tile {
+  background: lightblue;
+  height:5vh;
+}
+.bg-Color{
+  background-color: #683ab758;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.bg-errorColor{
+  background-color: #ef1703cf;
+  padding: 10px;
+  border-radius: 8px;
+}
+.card-padding{
+  padding-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.scroll {
+
+
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+}
+.scroll::-webkit-scrollbar { /* WebKit */
+  width: 0px;
+}

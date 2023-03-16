@@ -6,6 +6,7 @@ import { AuthserviceService, canDeactivate } from './authservice.service';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { StoresComponent } from './stores/stores.component';
+import { EmployeeComponent } from './employee/employee.component';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -27,6 +28,11 @@ const routes: Routes = [
     component: StoresComponent,
     canActivate: [AuthserviceService],
     // canDeactivate: [canDeactivate],
+  },
+  {
+    path: 'Employee',
+    component: EmployeeComponent,
+    canActivate: [AuthserviceService],
   },
 ];
 

@@ -29,7 +29,9 @@ export class StoresComponent {
   categoryData: any;
   name: any;
   formId: any;
+
   productData: any;
+  nodata: any;
 
   constructor(
     private router: Router,
@@ -48,17 +50,26 @@ export class StoresComponent {
     this.name = JSON.parse(_userName || '');
     this.api.get_table_data().subscribe((res) => {
       const data = res;
+      this.nodata = false;
       this.dataSource = data;
+      console.log(this.dataSource);
     });
     this.api.get_table_category().subscribe((res) => {
       const data = res;
+      this.nodata = false;
       this.categoryData = data;
     });
     this.api.get_table_product().subscribe((res) => {
       const data = res;
+      this.nodata = false;
       this.productData = data;
-      console.log(data);
     });
+
+    // if (this.nodata != false) {
+    //   this.nodata = true;
+    //   console.log('yes');
+    // }
+    // console.log(this.nodata);
   }
 
   //to open create dialog and to create new store
