@@ -89,7 +89,11 @@
               <span class="Warning-color" *ngIf="leave.get('empId').touched && leave.get('empId').
               hasError('required')">
                 Enter Employee Id</span>
-
+                <span class="Warning-color" *ngIf="leave.get('empId').touched && leave.get('empId').
+                hasError('required')">
+                  Enter Employee Id</span>
+                  <span class="Warning-color"*ngIf="leavecount=='errorMessage'" >
+                    {{errorMessage}}</span>
             </div>
          <div class="row bg-Color m-xl-0" *ngIf="leavecount=='success'">
           <div class="col-6">
@@ -106,11 +110,11 @@
           </div>
          </div>
 
-         <div class="row bg-errorColor m-xl-0" *ngIf="leavecount=='errorMessage'">
+         <!-- <div class="row bg-errorColor m-xl-0" >
 
               <div class="col-6 text-center">{{errorMessage}}</div>
 
-          </div>
+          </div> -->
 
 
             <div class="form-group  pb-3">

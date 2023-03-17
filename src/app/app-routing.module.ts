@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { RegistrationComponent } from './registration/registration.component';
 import { StoresComponent } from './stores/stores.component';
 import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeResolverService } from './employee-resolver.service';
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
     path: 'Employee',
     component: EmployeeComponent,
     canActivate: [AuthserviceService],
+    resolve: { employeeData: EmployeeResolverService },
   },
 ];
 

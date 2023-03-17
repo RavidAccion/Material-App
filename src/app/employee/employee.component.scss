@@ -13,13 +13,7 @@
   // input.ng-touched.ng-valid{
   //   border:1px solid rgb(0, 255, 51);
   // }
-// .mat-drawer-content {
-//   position: relative;
-//   z-index: 1;
-//    display: unset !important;
-//   height: 100%;
-//   overflow: auto;
-// }
+
 .app-container {
   height: 90%;
   margin: 0;
@@ -28,10 +22,6 @@
   width: 230px;
 }
 
-// .mat-drawer-content {
-
-//    overflow: hidden !important;
-// }
 .mat-cell {
   font-size: 14px;
   min-height: 48px;
@@ -55,7 +45,7 @@
 .mat-mdc-form-field {
   min-width: 100%;
 }
-/*temp content*/
+
 .example-spacer {
   flex: 1 1 auto;
 }

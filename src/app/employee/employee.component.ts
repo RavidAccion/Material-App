@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiServicesService } from '../api-services.service';
 import {
@@ -34,6 +35,7 @@ export class EmployeeComponent {
   constructor(
     private toastrService: ToastrService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder,
     private api: ApiServicesService
   ) {}
@@ -64,6 +66,8 @@ export class EmployeeComponent {
     this.api.getEmployeeData().subscribe((res) => {
       this.employeeData = res;
     });
+    // this.employeeData = this.activatedRoute.snapshot.data['employeeData'];
+    // console.log(this.activatedRoute.snapshot);
   }
   submit() {
     var data = {
