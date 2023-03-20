@@ -28,7 +28,7 @@ const routes: Routes = [
     path: 'Stores',
     component: StoresComponent,
     canActivate: [AuthserviceService],
-    // canDeactivate: [canDeactivate],
+    // canDeactivate: [canDeactivate],   // hided as it is not working
   },
   {
     path: 'Employee',

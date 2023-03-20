@@ -38,6 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { EmployeeComponent } from './employee/employee.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EmployeeComponent } from './employee/employee.component';
     MatRadioModule,
     MatSortModule,
     MatTabsModule,
+    MatSlideToggleModule,
     MatSelectModule,
     MatDialogModule,
     HttpClientModule,

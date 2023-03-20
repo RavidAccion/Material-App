@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { OverlayContainer } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class HomePageComponent {
   showFiller = false;
   userName: any;
+  theme = false;
   name: any;
   imageObject = [
     {
@@ -38,7 +39,13 @@ export class HomePageComponent {
       // title: 'Youtube example one with title.',
     },
   ];
-  constructor(private router: Router) {}
+  default: any = null;
+  currentTheme: string = '';
+  @HostBinding('class') componentCssClass: any;
+  constructor(
+    private router: Router,
+    public overlayContainer: OverlayContainer
+  ) {}
 
   ngOnInit(): void {
     this.getName();

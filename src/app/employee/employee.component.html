@@ -7,16 +7,39 @@
 
   <span class="toolbar-item-spacer"></span>
   <span class="px-2">Welcome</span><span>{{name| uppercase }} </span>
-
+  <button mat-icon-button matTooltip="Theme" [matMenuTriggerFor]="theme">
+    <mat-icon>format_color_fill</mat-icon>
+</button>
+<mat-menu #theme [overlapTrigger]="false" yPosition="below">
+  <button mat-menu-item (click)="onSetTheme('athena')">
+    <mat-icon>label_important</mat-icon>  Athena
+    </button>
+  <button mat-menu-item (click)="onSetTheme('zeus')">
+    <mat-icon>label_important</mat-icon>  Zeus
+    </button>
+    <button mat-menu-item (click)="onSetTheme('hera')">
+      <mat-icon>label_important</mat-icon>  Hera
+      </button>
+      <button mat-menu-item (click)="onSetTheme('poseidon')">
+        <mat-icon>label_important</mat-icon>  Poseidon
+        </button>
+</mat-menu>
   <button mat-icon-button matTooltip="My Account" [matMenuTriggerFor]="userAccountMenu">
       <mat-icon>more_vert</mat-icon>
   </button>
 
   <mat-menu #userAccountMenu [overlapTrigger]="false" yPosition="below">
+    <!-- <button mat-menu-item (click)="toggleTheme()">
+      <mat-icon>autorenew</mat-icon> {{ theme ? 'Light Theme' : 'Dark Theme ' }}
+      </button> -->
+
       <button mat-menu-item (click)="Logout()">
       <mat-icon>exit_to_app</mat-icon>Logout
       </button>
+
+
   </mat-menu>
+
 </mat-toolbar>
 
 <mat-sidenav-container class="app-container">
@@ -37,6 +60,7 @@
       </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content  >
+
     <mat-tab-group animationDuration="1000ms">
       <mat-tab label="Employee Details">
         <mat-card-content>

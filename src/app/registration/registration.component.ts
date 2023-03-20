@@ -1,4 +1,9 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  AfterViewInit,
+  ViewChild,
+  HostBinding,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ApiServicesService } from '.././api-services.service';
@@ -6,7 +11,7 @@ import { TableEditComponent } from '.././Dialog/table-edit/table-edit.component'
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { MatSort, Sort } from '@angular/material/sort';
 import { FormControl } from '@angular/forms';
 @Component({
@@ -20,7 +25,7 @@ export class RegistrationComponent implements AfterViewInit {
   paginator!: MatPaginator;
   @ViewChild(MatSort)
   matSort!: MatSort;
-
+  theme = false;
   search: any = new FormControl('');
   value: any;
   userData: any;
@@ -53,10 +58,13 @@ export class RegistrationComponent implements AfterViewInit {
     },
   ];
   dataSource!: MatTableDataSource<any>;
-
+  default: any = null;
+  currentTheme: string = '';
+  @HostBinding('class') componentCssClass: any;
   name: any;
   nodata: any;
   constructor(
+    public overlayContainer: OverlayContainer,
     private toastrService: ToastrService,
     private router: Router,
     private api: ApiServicesService,
@@ -64,6 +72,7 @@ export class RegistrationComponent implements AfterViewInit {
   ) {}
 
   ngOnInit() {
+    this.defaultTheme();
     this.get_table_data();
   }
   ngAfterViewInit() {
@@ -194,4 +203,30 @@ export class RegistrationComponent implements AfterViewInit {
     sessionStorage.clear();
     this.router.navigate(['']);
   }
+  defaultTheme() {
+    if (this.default == null) {
+      this.currentTheme = 'hera';
+      this.overlayContainer.getContainerElement().classList.add('hera');
+      this.componentCssClass = 'hera';
+      console.log(this.componentCssClass);
+    }
+  }
+  onSetTheme(theme: any) {
+    this.default = 'any';
+    this.currentTheme = theme;
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    this.componentCssClass = theme;
+  }
+  // toggleTheme() {
+  //   this.theme = !this.theme;
+  //   this.setTheme(this.theme);
+  // }
+  // private setTheme(darkTheme: boolean) {
+  //   const lightClass = 'theme--light';
+  //   const darkClass = 'theme--dark';
+  //   const removeClass = darkTheme ? lightClass : darkClass;
+  //   const addClass = darkTheme ? darkClass : lightClass;
+  //   document.body.classList.remove(removeClass);
+  //   document.body.classList.add(addClass);
+  // }
 }

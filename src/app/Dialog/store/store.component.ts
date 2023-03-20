@@ -9,6 +9,7 @@ import { ApiServicesService } from '../../api-services.service';
 })
 export class StoreComponent {
   formId: any;
+  theme = false;
   form: any = FormGroup;
   catform: any = FormGroup;
   addProduct: any = FormGroup;
@@ -148,5 +149,18 @@ export class StoreComponent {
         category_id: this.ProductCat.get('category_id'),
       },
     });
+  }
+
+  toggleTheme() {
+    this.theme = !this.theme;
+    this.setTheme(this.theme);
+  }
+  private setTheme(darkTheme: boolean) {
+    const lightClass = 'theme--light';
+    const darkClass = 'theme--dark';
+    const removeClass = darkTheme ? lightClass : darkClass;
+    const addClass = darkTheme ? darkClass : lightClass;
+    document.body.classList.remove(removeClass);
+    document.body.classList.add(addClass);
   }
 }

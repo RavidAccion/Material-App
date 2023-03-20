@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostBinding, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiServicesService } from '../api-services.service';
 import { MatDialog } from '@angular/material/dialog';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ToastrService } from 'ngx-toastr';
 import { StoreComponent } from '.././Dialog/store/store.component';
 import { MatPaginator } from '@angular/material/paginator';
@@ -29,11 +30,14 @@ export class StoresComponent {
   categoryData: any;
   name: any;
   formId: any;
-
+  theme = false;
   productData: any;
   nodata: any;
-
+  default: any = null;
+  currentTheme: string = '';
+  @HostBinding('class') componentCssClass: any;
   constructor(
+    public overlayContainer: OverlayContainer,
     private router: Router,
     private dialog: MatDialog,
     private toastrService: ToastrService,
@@ -41,6 +45,7 @@ export class StoresComponent {
   ) {}
 
   ngOnInit() {
+    this.defaultTheme();
     this.get_table_data();
   }
 
@@ -256,4 +261,30 @@ export class StoresComponent {
       resolve(confirm('Are you sure you want to get out of this Page?'));
     });
   }
+  defaultTheme() {
+    if (this.default == null) {
+      this.currentTheme = 'hera';
+      this.overlayContainer.getContainerElement().classList.add('hera');
+      this.componentCssClass = 'hera';
+      console.log(this.componentCssClass);
+    }
+  }
+  onSetTheme(theme: any) {
+    this.default = 'any';
+    this.currentTheme = theme;
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    this.componentCssClass = theme;
+  }
+  // toggleTheme() {
+  //   this.theme = !this.theme;
+  //   this.setTheme(this.theme);
+  // }
+  // private setTheme(darkTheme: boolean) {
+  //   const lightClass = 'theme--light';
+  //   const darkClass = 'theme--dark';
+  //   const removeClass = darkTheme ? lightClass : darkClass;
+  //   const addClass = darkTheme ? darkClass : lightClass;
+  //   document.body.classList.remove(removeClass);
+  //   document.body.classList.add(addClass);
+  // }
 }

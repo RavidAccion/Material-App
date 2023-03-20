@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-// @import '../src/assets/Themes/vt-themes.scss';
-// @import '../src/assets/Overrides/index.scss';
+
+// @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+// @import './app/Styles/Overrides/index.scss';
+// @import './app/Styles/Themes/theme';
+
+@import '/node_modules/@angular/material/theming';
+@import './theme.scss';
+
+///* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0;
+}
+

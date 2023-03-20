@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { OverlayContainer } from '@angular/cdk/overlay';
 import { ApiServicesService } from '../api-services.service';
 import {
   FormBuilder,
@@ -17,6 +18,8 @@ import { FloatLabelType } from '@angular/material/form-field';
 })
 export class EmployeeComponent {
   name: any;
+  get: any;
+  theme: any = false;
   availableLeave: any;
   casualLeave: any;
   wellnessLeave: any;
@@ -32,7 +35,11 @@ export class EmployeeComponent {
     'Phone Num',
   ];
   errorMessage: any;
+  default: any = null;
+  currentTheme: string = '';
+  @HostBinding('class') componentCssClass: any;
   constructor(
+    public overlayContainer: OverlayContainer,
     private toastrService: ToastrService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
@@ -41,6 +48,7 @@ export class EmployeeComponent {
   ) {}
 
   ngOnInit() {
+    this.defaultTheme();
     this.getName();
     this.loginFormBuild();
     this.getDatas();
@@ -59,6 +67,33 @@ export class EmployeeComponent {
     });
   }
 
+  defaultTheme() {
+    if (this.default == null) {
+      this.currentTheme = 'hera';
+      this.overlayContainer.getContainerElement().classList.add('hera');
+      this.componentCssClass = 'hera';
+      console.log(this.componentCssClass);
+    }
+  }
+  onSetTheme(theme: any) {
+    this.default = 'any';
+    this.currentTheme = theme;
+    this.overlayContainer.getContainerElement().classList.add(theme);
+    this.componentCssClass = theme;
+  }
+
+  // toggleTheme() {
+  //   this.theme = !this.theme;
+  //   this.setTheme(this.theme);
+  // }
+  // private setTheme(darkTheme: boolean) {
+  //   const lightClass = 'theme--light';
+  //   const darkClass = 'theme--dark';
+  //   const removeClass = darkTheme ? lightClass : darkClass;
+  //   const addClass = darkTheme ? darkClass : lightClass;
+  //   document.body.classList.remove(removeClass);
+  //   document.body.classList.add(addClass);
+  // }
   getDatas() {
     this.api.get_leavelist_data().subscribe((res) => {
       this.leavelist = res;

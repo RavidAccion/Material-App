@@ -1,0 +1,537 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic&subset=latin-ext');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic&amp;subset=latin-ext');
+
+@import '/node_modules/@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+
+$default-primary: mat-palette($mat-purple);
+$default-accent:  mat-palette($mat-amber, A200, A100, A400);
+$default-warn:    mat-palette($mat-deep-orange);
+
+$default-theme:   mat-light-theme($default-primary, $default-accent, $default-warn);
+
+.default {
+  @include angular-material-theme($default-theme);
+}
+
+////////////////////////////////////////////////////////////////////
+// ZEUS (138 lines)
+////////////////////////////////////////////////////////////////////
+
+$zeus-typography: mat-typography-config(
+  $font-family:   '"Helvetica Neue", sans-serif',
+  $display-4:     mat-typography-level(112px, 112px, 300),
+  $display-3:     mat-typography-level(56px, 56px, 600),
+  $display-2:     mat-typography-level(45px, 48px, 400),
+  $display-1:     mat-typography-level(34px, 40px, 600),
+  $headline:      mat-typography-level(24px, 32px, 600),
+  $title:         mat-typography-level(20px, 32px, 600),
+  $subheading-2:  mat-typography-level(16px, 22px, 600),
+  $subheading-1:  mat-typography-level(15px, 24px, 600),
+  $body-2:        mat-typography-level(14px, 24px, 600),
+  $body-1:        mat-typography-level(14px, 30px, 600),
+  $caption:       mat-typography-level(12px, 20px, 600),
+  $button:        mat-typography-level(10px, 14px, 800),
+    // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 400)
+
+);
+$zeus-primary-color: (
+  // Non-accent Backgrounds
+  // General
+  50: #e3f2fd,    // Most far away
+  100: #bbdefb,   // Far far away
+  200: #90caf9,   // Far away
+  300: #64b5f6,   // Middle far
+  400: #42a5f5,   // Middle
+  500: #2196f3,   // Middle close
+  600: #1e88e5,   // Close
+  700: #1976d2,   // Very close
+  800: #1565c0,   // Very very Close
+  900: #0d47a1,   // Closest
+  A100: #82b1ff,  // Most far away
+  A200: #448aff,  // Middle
+  A400: #2979ff,  // Close
+  A700: #2962ff,  // Closest
+  contrast: (
+    50: $dark-primary-text,     // Most far away
+    100: $dark-primary-text,    // Far far away
+    200: $dark-primary-text,    // Far away
+    300: $dark-primary-text,    // Middle far
+    400: $dark-primary-text,    // Middle
+    500: $light-primary-text,   // Middle close
+    600: $light-primary-text,   // Close
+    700: $light-primary-text,   // Very close
+    800: $light-primary-text,   // Very very Close
+    900: $light-primary-text,   // Closest
+    A100: $dark-primary-text,   // Most far away
+    A200: $light-primary-text,  // Middle
+    A400: $light-primary-text,  // Close
+    A700: $light-primary-text,  // Closest
+  )
+);
+
+$zeus-theme: mat-light-theme(
+  mat-palette($zeus-primary-color),
+  mat-palette($mat-yellow),
+  mat-palette($mat-red)
+);
+
+.zeus {
+  @include angular-material-theme($zeus-theme);
+  @include angular-material-typography($zeus-typography);
+
+  $background: mat-color($zeus-primary-color, 50);
+  $primary: mat-color($zeus-primary-color, 500);
+  $accent: mat-color($mat-yellow, 500);
+  $warn: mat-color($mat-red, 500);
+
+  main {
+    background-color: $background;
+  }
+  a, a:hover, a:hover span {
+    color: $primary;
+    text-decoration: none;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6, h7 {
+    color: $primary;
+  }
+  // override native angular-material classes here:
+  .mat-raised-button, .mat-button {
+    border-radius: 19px;
+  }
+  .mat-raised-button {
+    @include mat-elevation(5);
+  }
+
+  .mat-raised-button.back {
+    color: $light-primary-text;
+    background-color: mat-color($mat-grey, A700);
+  }
+  .mat-checkbox.mat-checkbox-checked {
+    color: $light-primary-text;
+    background-color: $accent;
+  }
+  .mat-checkbox .mat-checkbox-inner-container {
+    display: none;
+  }
+  .mat-checkbox {
+    color: $light-primary-text;
+    background-color: $primary;
+    border-radius: 19px;
+    box-sizing: border-box;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    outline: 0;
+    border: none;
+    -webkit-tap-highlight-color: transparent;
+    display: inline-block;
+    white-space: nowrap;
+    text-decoration: none;
+    vertical-align: baseline;
+    text-align: center;
+    margin: 0;
+        margin-right: 0px;
+        margin-bottom: 0px;
+    min-width: 88px;
+    line-height: 36px;
+    padding: 0 16px;
+    overflow: visible;
+  }
+  .mat-card {
+    margin: 10px 10px 0 10px;
+    border-radius: 19px;
+  }
+  .mat-card.mat-card-accent {
+    background-color: $accent;
+    color: $dark-primary-text;
+  }
+  .mat-card.mat-card-warn {
+    background-color: $warn;
+    color: $light-primary-text;
+  }
+  .mat-toolbar {
+    @extend .mat-primary;
+    @include mat-elevation(2);
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+// POSEIDON (145 lines)
+////////////////////////////////////////////////////////////////////
+
+$poseidon-typography: mat-typography-config(
+  $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+  $display-4:     mat-typography-level(112px, 112px, 300),
+  $display-3:     mat-typography-level(66px, 56px, 400),
+  $display-2:     mat-typography-level(55px, 48px, 400),
+  $display-1:     mat-typography-level(44px, 40px, 400),
+  $headline:      mat-typography-level(34px, 32px, 400),
+  $title:         mat-typography-level(10px, 32px, 500),
+  $subheading-2:  mat-typography-level(16px, 22px, 500),
+  $subheading-1:  mat-typography-level(15px, 24px, 400),
+  $body-2:        mat-typography-level(14px, 24px, 500),
+  $body-1:        mat-typography-level(14px, 30px, 400),
+  $caption:       mat-typography-level(12px, 20px, 400),
+  $button:        mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 400)
+
+);
+$poseidon-primary-color: (
+   // Backgrounds
+  50: #aec4c7,
+  100: #8bb7be,
+  200: #57a2ae,
+  300: #3e96a7,
+  400: #1e8b9d,
+  500: #0090a8,
+  600: #007a8d,
+  700: #006a7a,
+  800: #00616d,
+  900: #004f53,
+  A100: #73d7d7,
+  A200: #12b1b1,
+  A400: #008b9a,
+  A700: #00667a,
+  contrast: (
+    // Texts
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $light-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text,
+  )
+);
+
+$poseidon-theme: mat-light-theme(
+  mat-palette($poseidon-primary-color, A200, A100, A400),
+  mat-palette($mat-orange),
+  mat-palette($mat-purple)
+);
+
+.poseidon {
+  @include angular-material-theme($poseidon-theme);
+  @include angular-material-typography($poseidon-typography);
+  $background: #F0F0F0;
+  $primary: mat-color($poseidon-primary-color, A200);
+  $accent: mat-color($mat-orange, 500);
+  $warn: mat-color($mat-purple, 500);
+  main {
+    background-color: $background;
+  }
+  a, a:hover, a:hover span {
+    color: $primary;
+    text-decoration: none;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6, h7 {
+    color: $primary;
+  }
+
+  .mat-raised-button:not([class*="mat-elevation-z"]),
+  .mat-button:not([class*="mat-elevation-z"]),
+  .mat-fab:not([class*="mat-elevation-z"]),
+  .mat-mini-fab:not([class*="mat-elevation-z"]),
+  .mat-icon-button {
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+  }
+  .mat-chip {
+    box-sizing: border-box;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    border-radius: 10px;
+  }
+
+  .mat-raised-button.back {
+    color: $light-primary-text;
+    background-color: mat-color($mat-grey, A700);
+  }
+
+  .mat-card {
+    margin: 10px 10px 0 10px;
+  }
+  .mat-checkbox-inner-container {
+    height: 40px;
+    width: 40px;
+  }
+  .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 40px;
+  }
+
+  .mat-list .mat-list-item .mat-list-text h4.mat-line {
+    font-weight: 800;
+    color: $primary;
+  }
+  .mat-list .mat-list-item .mat-list-text p.mat-line {
+    color: mat-color($poseidon-primary-color, A100);
+  }
+
+  .mat-card:not([class*="mat-elevation-z"]) {
+    box-sizing: border-box;
+    flex: 1;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+  }
+  .mat-toolbar {
+    background-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+  }
+  .mat-card.mat-card-accent {
+    background-color: $accent;
+    color: $dark-primary-text;
+  }
+  .mat-card.mat-card-warn {
+    background-color: $warn;
+    color: $light-primary-text;
+  }
+}
+
+
+//////////////////////////////////////////////////////////////////////////////
+// ATHENA (156 lines)
+//////////////////////////////////////////////////////////////////////////////
+
+$athena-dark-primary-text: #3e2723;
+$athena-light-primary-text: #fff1e7;
+$athena-color: (
+  50: #fffff7,
+  100: #fff1e7,
+  200: #ff968a,
+  300: #ff675b,
+  400: #ff515b,
+  500: #ff4060,
+  600: #f43e60,
+  700: #e63854,
+  800: #d82049,
+  900: #bf0c4b,
+  A100: #ffecec,
+  A200: #ffdecd,
+  A400: #f1a798,
+  A700: #e98c8a,
+  contrast: (
+    50: $athena-dark-primary-text,
+    100: $athena-dark-primary-text,
+    200: $athena-dark-primary-text,
+    300: $athena-dark-primary-text,
+    400: $athena-dark-primary-text,
+    500: $athena-light-primary-text,
+    600: $athena-light-primary-text,
+    700: $athena-light-primary-text,
+    800: $athena-light-primary-text,
+    900: $athena-light-primary-text,
+    A100: $athena-dark-primary-text,
+    A200: $athena-dark-primary-text,
+    A400: $athena-light-primary-text,
+    A700: $athena-light-primary-text,
+  )
+);
+$athena-typography: mat-typography-config(
+  $font-family:   'Roboto, "Helvetica Neue", sans-serif',
+  $display-4:     mat-typography-level(112px, 112px, 300),
+  $display-3:     mat-typography-level(66px, 56px, 400),
+  $display-2:     mat-typography-level(55px, 48px, 400),
+  $display-1:     mat-typography-level(44px, 40px, 400),
+  $headline:      mat-typography-level(34px, 32px, 400),
+  $title:         mat-typography-level(30px, 32px, 500),
+  $subheading-2:  mat-typography-level(16px, 22px, 500),
+  $subheading-1:  mat-typography-level(15px, 24px, 400),
+  $body-2:        mat-typography-level(14px, 24px, 500),
+  $body-1:        mat-typography-level(14px, 30px, 400),
+  $caption:       mat-typography-level(12px, 20px, 400),
+  $button:        mat-typography-level(14px, 14px, 500),
+    // Line-height must be unit-less fraction of the font-size.
+  $input:         mat-typography-level(inherit, 1.125, 400)
+
+);
+
+$athena-light-theme-foreground: (
+  base:              $athena-dark-primary-text,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba($athena-dark-primary-text, 0.26),
+  disabled-text:     $dark-disabled-text,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba($athena-dark-primary-text, 0.54),
+  icons:             rgba($athena-dark-primary-text, 0.54),
+  text:              rgba($athena-dark-primary-text, 0.87),
+  slider-min:        rgba($athena-dark-primary-text, 0.87),
+  slider-off:        rgba($athena-dark-primary-text, 0.26),
+  slider-off-active: rgba($athena-dark-primary-text, 0.38),
+);
+$athena-light-theme-background: (
+  status-bar: $athena-light-primary-text,
+  app-bar:    $athena-light-primary-text,
+  background: $athena-light-primary-text,
+  hover:      rgba($athena-dark-primary-text, 0.04), // TODO(kara): check style with Material Design UX
+  card:       mat-color($athena-color, 100),
+  dialog:     mat-color($athena-color, 100),
+  disabled-button: rgba($athena-dark-primary-text, 0.04),
+  raised-button: mat-color($athena-color, 100),
+  focused-button: $dark-focused,
+  selected-button: $athena-light-primary-text,
+  selected-disabled-button: $athena-light-primary-text,
+  disabled-button-toggle: $athena-light-primary-text,
+  unselected-chip: $athena-light-primary-text,
+  disabled-list-option: $athena-light-primary-text,
+);
+
+$athena-theme: (
+    primary: mat-palette($athena-color, A200, A100, A400),
+    accent: mat-palette($mat-brown, 800, 700, 600),
+    warn: mat-palette($mat-red),
+    is-dark: false,
+    foreground: $athena-light-theme-foreground,
+    background: $athena-light-theme-background,
+);
+
+
+.athena {
+  @include angular-material-theme($athena-theme);
+  @include angular-material-typography($athena-typography);
+  $background: mat-color($athena-color, 100);
+  $primary: mat-color($athena-color, A200);
+  $accent: mat-color($mat-brown, 500);
+  $warn: mat-color($mat-red, 500);
+  main {
+    background-color: $background;
+  }
+  a, a:hover, a:hover span {
+    color: $accent;
+    text-decoration: none;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6, h7 {
+    text-transform: uppercase;
+    color: $accent;
+  }
+  .mat-raised-button:not([class*="mat-elevation-z"]),
+  .mat-button:not([class*="mat-elevation-z"]),
+  .mat-icon-button {
+    text-transform: uppercase;
+    border-radius: 0 10px 0;
+  }
+  .mat-fab:not([class*="mat-elevation-z"]) {
+    text-transform: uppercase;
+    border-radius: 0 30px 0;
+  }
+  .mat-raised-button.back {
+    text-transform: uppercase;
+    color: $light-primary-text;
+    background-color: mat-color($mat-grey, A700);
+  }
+  .mat-card {
+    margin: 10px 10px 0 10px;
+  }
+  .mat-list .mat-list-item .mat-list-text h4.mat-line {
+    font-weight: 800;
+    color: $accent;
+  }
+  .mat-list .mat-list-item .mat-list-text p.mat-line {
+    color: $primary;
+  }
+  .mat-toolbar {
+    @extend .mat-accent;
+    @include mat-elevation(2);
+  }
+  .mat-card {
+    background-color: mat-color($athena-color, 100);;
+    color: $dark-primary-text;
+  }
+  .mat-card.mat-card-accent {
+    background-color: $accent;
+    color: $light-primary-text;
+  }
+  .mat-card.mat-card-warn {
+    background-color: $warn;
+    color: $light-primary-text;
+  }
+}
+
+////////////////////////////////////////////////////////////////////
+// HERA (48 lines)
+////////////////////////////////////////////////////////////////////
+
+$hera-theme: mat-dark-theme(
+  mat-palette($mat-green),
+  mat-palette($mat-purple),
+  mat-palette($mat-red)
+);
+
+.hera {
+  @include angular-material-theme($hera-theme);
+
+  $background: mat-color($mat-grey, 700);;
+  $primary: mat-color($mat-green, 500);
+  $accent: mat-color($mat-purple, 500);
+  $warn: mat-color($mat-red, 500);
+
+  main {
+    background-color: $background;
+  }
+  a, a:hover, a:hover span {
+    color: $primary;
+    text-decoration: none;
+    outline: none;
+  }
+  h1, h2, h3, h4, h5, h6, h7 {
+    color: $primary;
+  }
+
+  .mat-raised-button.back {
+    color: $light-primary-text;
+    background-color: mat-color($mat-grey, A700);
+  }
+
+  .mat-card {
+    margin: 10px 10px 0 10px;
+  }
+  .mat-card.mat-card-accent {
+    background-color: $accent;
+    color: $dark-primary-text;
+  }
+  .mat-card.mat-card-warn {
+    background-color: $warn;
+    color: $light-primary-text;
+  }
+  .mat-toolbar {
+    @extend .mat-primary;
+    @include mat-elevation(2);
+  }
+}
+
+@include mat-core();
