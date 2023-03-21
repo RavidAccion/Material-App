@@ -69,9 +69,9 @@ export class EmployeeComponent {
 
   defaultTheme() {
     if (this.default == null) {
-      this.currentTheme = 'hera';
-      this.overlayContainer.getContainerElement().classList.add('hera');
-      this.componentCssClass = 'hera';
+      this.currentTheme = 'poseidon';
+      this.overlayContainer.getContainerElement().classList.add('poseidon');
+      this.componentCssClass = 'poseidon';
       console.log(this.componentCssClass);
     }
   }
